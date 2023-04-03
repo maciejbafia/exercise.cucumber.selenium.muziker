@@ -17,4 +17,5 @@ public class EightStringGuitars {
     public String getEightStringGuitarType(){
         return eightStringGuitar.getText();
     }
+    //ESP Iron Cross James Hetfield Snow White
 }
