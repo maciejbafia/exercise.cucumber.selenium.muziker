@@ -1,5 +1,5 @@
-
 package steps;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -7,35 +7,38 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
+import pages.DiscountsPage;
 import pages.HomePage;
-import pages.SearchResults;
 
+import java.time.Duration;
 
-public class SearchForItem {
+public class DiscountSteps {
 
     public static WebDriver driver;
     public String url = "https://www.muziker.pl/en";
 
-    @Given("I am not logged in, on the main page of the online store")
+    @Given("While on the main page of the online store")
     public void setUp(){
         System.setProperty("webdriver.chrome.driver","src/main/resources/chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get(url);
     }
-    @When("I type in search form name of an item that i want to find")
-        public void lookForItemAndFindIt(){
+    @When("I select \"Discounts\" from main page")
+    public void getDiscounts(){
         HomePage homePage = new HomePage(driver);
         homePage.agreeOnCookies();
-        homePage.findItem();
+        homePage.clickDiscountsBtn();
     }
-    @Then("I verify that i found what i was looking for")
-        public void verifySearch(){
-        SearchResults searchResults = new SearchResults(driver);
-        Assert.assertEquals(searchResults.getSopranoRecorderName(),"Aulos 302B Soprano Recorder C Beige");
+    @Then("I see only products that have discount label")
+    public void verifyDiscounts(){
+        DiscountsPage discountsPage = new DiscountsPage(driver);
+//        discountsPage.clickShowMoreProductsBtn(5); //pętla nie dziala poprawnie i przerywa test
+        Assert.assertTrue(discountsPage.isDiscountOnAllProducts());
         driver.quit();
-    }
 
+    }
 }

@@ -6,4 +6,4 @@ Feature: Discounted filter
     When I select "Guitars" from "Musical Instruments"
     And I select "Electric Guitars - All Shapes" from "Electric Guitars"
     When I select "Discounted" from "Condition" filter
-    Then I see only products that have discount label
+    Then I see only guitars that have discount label

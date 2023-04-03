@@ -24,12 +24,19 @@ public class HomePage {
     @FindBy(xpath = "//div[@class='luigi-ac-button'][contains(text(),'Show all results')]")
     WebElement showAllResultsBtn;
 
-    public void findItem(){
-        searchForItemForm.sendKeys("Aulos 302B Soprano Recorder C Beige", Keys.ENTER);
+    @FindBy(xpath = "//h2[@class='tile__header'][contains(text(),'Discounts')]")
+    WebElement discountsBtn;
+
+
+    public void clickDiscountsBtn(){
+        discountsBtn.click();
 
     }
+    public void findItem(){
+        searchForItemForm.sendKeys("Aulos 302B Soprano Recorder C Beige", Keys.ENTER);
+    }
 
-    public void clickMusicalInstruments(){
+    public void clickMusicalInstrumentsBtn(){
         musicalInstrumentsBtn.click();
     }
 

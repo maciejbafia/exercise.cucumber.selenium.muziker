@@ -1,4 +1,4 @@
-Feature: Discount items from main page
+Feature: Discount btn from main page
 
   Scenario: As user who is not logged checking if every item i discount page has a discount
 

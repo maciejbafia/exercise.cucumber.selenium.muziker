@@ -5,9 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class EightStringGuitars {
+public class EightStringGuitarsPage {
 
-    public EightStringGuitars(WebDriver driver){
+    public EightStringGuitarsPage(WebDriver driver){
         PageFactory.initElements(driver,this);
     }
 
